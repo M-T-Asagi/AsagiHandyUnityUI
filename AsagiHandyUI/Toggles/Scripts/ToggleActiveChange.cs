@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AsagiHandy.UI
+namespace AsagiHandy.UI.ToggleController
 {
     public class ToggleActiveChange : MonoBehaviour
     {

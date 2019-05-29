@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AsagiHandy.UI
+namespace AsagiHandy.UI.ToggleController
 {
-    public class LeftRightToggle : MonoBehaviour
+    public class ToggleAnimationController : MonoBehaviour
     {
         [SerializeField]
         Toggle toggle = null;
         [SerializeField]
-        Animator animator = null;
+        Animator targetAnimator = null;
 
         // Start is called before the first frame update
         void Start()
         {
-            animator.SetBool("isOn", toggle.isOn);
+            targetAnimator.SetBool("isOn", toggle.isOn);
             toggle.onValueChanged.AddListener(ToggleValueChange);
         }
 
         void ToggleValueChange(bool isOn)
         {
-            animator.SetBool("isOn", isOn);
+            targetAnimator.SetBool("isOn", isOn);
         }
 
     }
