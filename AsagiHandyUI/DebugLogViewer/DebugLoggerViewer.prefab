@@ -316,6 +316,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1885819747840390066}
+  - component: {fileID: 1156259547}
+  - component: {fileID: 1156259548}
+  - component: {fileID: 1156259549}
   m_Layer: 5
   m_Name: DebugLoggerViewer
   m_TagString: Untagged
@@ -343,6 +346,78 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1156259547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885819747840390067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92928cfdb2ff4635b37f0e48fd72aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentWrapper: {fileID: 1885819748769594082}
+--- !u!114 &1156259548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885819747840390067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2522ba2bb73b64d088503b4d6e27026c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1885819748769594082}
+  logPrefab: {fileID: 4056195571804035491, guid: 95bd1a2a2deb84ff183ab77070631067,
+    type: 3}
+  warningPrefab: {fileID: 496886659945336400, guid: 61e6a53e5170044258e0524db55e77e5,
+    type: 3}
+  errorPrefab: {fileID: 6620824978124407200, guid: 8c974db071f3f47c4b441ab913f9a908,
+    type: 3}
+  OnGeneratedContent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1156259547}
+        m_MethodName: UpdateContentWrapperSize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1156259549}
+        m_MethodName: PositionFitting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1156259549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885819747840390067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba7ee9c10f634bf28888067196c7546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollRect: {fileID: 1885819747905790014}
 --- !u!1 &1885819747905790002
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +488,18 @@ MonoBehaviour:
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1156259549}
+        m_MethodName: positionUpdate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!222 &1885819747905790015
@@ -675,8 +761,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1885819748769594082}
   - component: {fileID: 1885819748769594081}
-  - component: {fileID: 1885819748769594080}
-  - component: {fileID: 1885819748769594095}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -700,7 +784,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000027642593}
+  m_AnchoredPosition: {x: 0, y: 0.00003377475}
   m_SizeDelta: {x: 0, y: 426.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1885819748769594081
@@ -726,54 +810,6 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
---- !u!114 &1885819748769594080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885819748769594083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2522ba2bb73b64d088503b4d6e27026c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 1885819748769594082}
-  logPrefab: {fileID: 4056195571804035491, guid: 95bd1a2a2deb84ff183ab77070631067,
-    type: 3}
-  warningPrefab: {fileID: 496886659945336400, guid: 61e6a53e5170044258e0524db55e77e5,
-    type: 3}
-  errorPrefab: {fileID: 6620824978124407200, guid: 8c974db071f3f47c4b441ab913f9a908,
-    type: 3}
-  OnGeneratedContent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1885819748769594095}
-        m_MethodName: UpdateContentWrapperSize
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1885819748769594095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885819748769594083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d92928cfdb2ff4635b37f0e48fd72aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contentWrapper: {fileID: 1885819748769594082}
 --- !u!1 &1885819748815862805
 GameObject:
   m_ObjectHideFlags: 0
