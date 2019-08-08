@@ -17,6 +17,12 @@ public class DebugLogContentGenerator : MonoBehaviour
     GameObject errorPrefab;
     [SerializeField]
     UnityEvent OnGeneratedContent = null;
+    [SerializeField]
+    bool viewLog = true;
+    [SerializeField]
+    bool viewWarning = true;
+    [SerializeField]
+    bool viewError = true;
 
     // Start is called before the first frame update
     void Start()
@@ -29,14 +35,19 @@ public class DebugLogContentGenerator : MonoBehaviour
         switch (type)
         {
             case LogType.Log:
-                AddContent(System.DateTime.Now.ToString(DATETIME_FORMAT), condition, logPrefab);
+                if(viewLog)
+                    AddContent(System.DateTime.Now.ToString(DATETIME_FORMAT), condition, logPrefab);
                 break;
             case LogType.Warning:
-                AddContent(System.DateTime.Now.ToString(DATETIME_FORMAT), condition, warningPrefab);
+                if(viewWarning)
+                    AddContent(System.DateTime.Now.ToString(DATETIME_FORMAT), condition, warningPrefab);
                 break;
             case LogType.Error:
-                AddContent(System.DateTime.Now.ToString(DATETIME_FORMAT), condition, errorPrefab);
-                AddContent(System.DateTime.Now.ToString(DATETIME_FORMAT), stackTrace, errorPrefab);
+                if(viewError)
+                {
+                    AddContent(System.DateTime.Now.ToString(DATETIME_FORMAT), condition, errorPrefab);
+                    AddContent(System.DateTime.Now.ToString(DATETIME_FORMAT), stackTrace, errorPrefab);
+                }
                 break;
         }
         if (OnGeneratedContent != null)
@@ -45,8 +56,7 @@ public class DebugLogContentGenerator : MonoBehaviour
 
     private void AddContent(string time, string main, GameObject prefab)
     {
-        GameObject newObj = null;
-        newObj = Instantiate(prefab, parent);
+        GameObject newObj = Instantiate(prefab, parent);
         newObj.GetComponent<DebugLogViewerContentSetter>().UpdateText(time, main);
     }
 }
