@@ -25,7 +25,7 @@ public class DebugLogContentGenerator : MonoBehaviour
     bool viewError = true;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Application.logMessageReceived += Application_logMessageReceived;
     }
