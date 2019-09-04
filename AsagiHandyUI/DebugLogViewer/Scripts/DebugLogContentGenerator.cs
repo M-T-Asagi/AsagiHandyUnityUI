@@ -59,4 +59,9 @@ public class DebugLogContentGenerator : MonoBehaviour
         GameObject newObj = Instantiate(prefab, parent);
         newObj.GetComponent<DebugLogViewerContentSetter>().UpdateText(time, main);
     }
+
+    private void OnDestroy()
+    {
+        Application.logMessageReceived -= Application_logMessageReceived;
+    }
 }
